@@ -36,7 +36,7 @@ def main():
     driver.get("https://www.google.com/search?q=previsao+do+tempo")
     sleep(5)
     btns = driver.find_elements(By.TAG_NAME,'g-raised-button')
-    sleep(1)
+    sleep(3)
     btns[1].click()
     sleep(3)
 
@@ -73,11 +73,13 @@ def main():
     for pos,info in enumerate(lista_info_temp):
         
         if pos == 0:
+
+            temperatura_atual = driver.find_element(By.ID,'wob_tm').text
             
             mensagem += f'''
                 <h2>Tempo Hoje:</h2>
                 <p>Dia: {info[0]}</p>
-                <p>Min: {info[1][1]} ºC - Máx: {info[1][0]} ºC</p>
+                <p>Temperatura Atual: {temperatura_atual} ºC</p>
                 <p>Condição do tempo: {info[2]}</p>
 
                 <h2>Previsão para os próximos 3 dias:</h2>
